@@ -1,0 +1,22 @@
+// GENERATED prep runner (bytes in, bytes out).
+use callplot::prep::prep;
+use callplot::prep::PrepOptions;
+use callplot::jcompat::str_bytes;
+
+pub fn report(v: Vec<u8>, idx: i64) {
+    println!("OK {} {}", idx, v.len());
+    for c in v {
+        println!("{}", c);
+    }
+}
+
+pub fn main() {
+    report(prep(&str_bytes("@ 10.0.0.1 alice\n@ 10.0.0.9 alice\n@opt/stagger/on\n----------------------------------------\nDate 11/05/2026 10:00:03.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.5\nMESSAGE sip:bob@example.com SIP/2.0\n----------------------------------------\nDate 11/05/2026 10:00:03.500\nSource Address: 10.0.0.9\nDestination Address: 10.0.0.5\nSIP/2.0 202 Accepted\n".to_string()), &(PrepOptions { links: true })), 0);
+    report(prep(&str_bytes("@ 10.0.0.1 alice\n@ 10.0.0.9 alice\n@opt/stagger/on\n----------------------------------------\nDate 11/05/2026 10:00:03.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.5\nMESSAGE sip:bob@example.com SIP/2.0\n----------------------------------------\nDate 11/05/2026 10:00:03.500\nSource Address: 10.0.0.9\nDestination Address: 10.0.0.5\nSIP/2.0 202 Accepted\n".to_string()), &(PrepOptions { links: false })), 1);
+    report(prep(&str_bytes("----------------------------------------\nDate 11/05/2026 10:00:01.000\nSource Address: 192.168.1.10\nDestination Address: 192.168.1.20\nGET /index.html HTTP/1.1\nHost: example.com\n----------------------------------------\nDate 11/05/2026 10:00:01.250\nSource Address: 192.168.1.20\nDestination Address: 192.168.1.10\nHTTP/1.1 200 OK\nContent-Type: text/html\n".to_string()), &(PrepOptions { links: true })), 2);
+    report(prep(&str_bytes("----------------------------------------\nDate 11/05/2026 10:00:01.000\nSource Address: 192.168.1.10\nDestination Address: 192.168.1.20\nGET /index.html HTTP/1.1\nHost: example.com\n----------------------------------------\nDate 11/05/2026 10:00:01.250\nSource Address: 192.168.1.20\nDestination Address: 192.168.1.10\nHTTP/1.1 200 OK\nContent-Type: text/html\n".to_string()), &(PrepOptions { links: false })), 3);
+    report(prep(&str_bytes("----------------------------------------\nDate 11/05/2026 10:00:02.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.2\n-INVITE sip:bob@example.com SIP/2.0\n----------------------------------------\nDate 11/05/2026 10:00:02.100\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\n-SIP/2.0 180 Ringing\n----------------------------------------\nDate 11/05/2026 10:00:02.900\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\nSIP/2.0 200 OK\n".to_string()), &(PrepOptions { links: true })), 4);
+    report(prep(&str_bytes("----------------------------------------\nDate 11/05/2026 10:00:02.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.2\n-INVITE sip:bob@example.com SIP/2.0\n----------------------------------------\nDate 11/05/2026 10:00:02.100\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\n-SIP/2.0 180 Ringing\n----------------------------------------\nDate 11/05/2026 10:00:02.900\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\nSIP/2.0 200 OK\n".to_string()), &(PrepOptions { links: false })), 5);
+    report(prep(&str_bytes("@ 10.0.0.1 alice\n@ 10.0.0.2 proxy\n----------------------------------------\nDate 11/05/2026 10:00:00.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.2\nINVITE sip:bob@example.com SIP/2.0\nVia: SIP/2.0/UDP 10.0.0.1\n----------------------------------------\nDate 11/05/2026 10:00:00.120\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\nSIP/2.0 100 Trying\n----------------------------------------\nDate 11/05/2026 10:00:00.450\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.3\nINVITE sip:bob@example.com SIP/2.0\n".to_string()), &(PrepOptions { links: true })), 6);
+    report(prep(&str_bytes("@ 10.0.0.1 alice\n@ 10.0.0.2 proxy\n----------------------------------------\nDate 11/05/2026 10:00:00.000\nSource Address: 10.0.0.1\nDestination Address: 10.0.0.2\nINVITE sip:bob@example.com SIP/2.0\nVia: SIP/2.0/UDP 10.0.0.1\n----------------------------------------\nDate 11/05/2026 10:00:00.120\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.1\nSIP/2.0 100 Trying\n----------------------------------------\nDate 11/05/2026 10:00:00.450\nSource Address: 10.0.0.2\nDestination Address: 10.0.0.3\nINVITE sip:bob@example.com SIP/2.0\n".to_string()), &(PrepOptions { links: false })), 7);
+}

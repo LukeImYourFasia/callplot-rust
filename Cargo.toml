@@ -1,0 +1,15 @@
+[package]
+name = "callplot"
+version = "1.0.0"
+license = "LGPL-2.1"
+description = "Sequence diagram generation from call charts (Rust port of callplot)"
+categories = ["visualization", "cli-utils", "documentation"]
+keywords = ["callplot", "sequence-diagram", "call-chart"]
+authors = ["dynamicsoft"]
+homepage = "http://marvell.github.io/marvell/1-tech/callplot.html"
+repository = "http://sourceforge.net/projects/callplot/"
+edition = "2021"
+exclude = ["callplot-java", "callplot-js", "callplot-python", "samples", "scripts"]
+
+[lib]
+name = "callplot"
